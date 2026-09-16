@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Melvane</title>
+<meta name="description" content="Contactez Melvane pour toute question sur nos appartements à Paris ou pour confier la gestion de votre bien.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">Melvane</a>
+    <div class="header-actions">
+      <div class="nav-links">
+        <a href="owners.html" class="btn btn-outline">Owner</a>
+        <a href="guests.html" class="btn">Guest</a>
+      </div>
+      <button class="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu">
+  <div class="mobile-menu-top">
+    <span class="logo">Melvane</span>
+    <button class="mobile-menu-close" aria-label="Fermer">&times;</button>
+  </div>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="guests.html">Guest</a>
+    <a href="owners.html">Owner</a>
+    <a href="projects.html">Appartements</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Contact</h1>
+    <p class="section-lede">Une question, un bien à nous confier, un séjour à organiser — écrivez-nous.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="container contact-grid">
+    <form class="contact-form" action="#" method="post">
+      <div>
+        <label for="name">Nom</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-accent" style="align-self:flex-start;">Envoyer</button>
+    </form>
+    <div class="contact-info">
+      <h3 style="font-family:var(--font-display); font-size:22px; margin-bottom:16px;">Coordonnées</h3>
+      <p>48 Avenue Montaigne, 75008 Paris</p>
+      <p><a href="tel:+33974377605">+33 9 74 37 76 05</a></p>
+      <p><a href="mailto:melvanebydesign@gmail.com">melvanebydesign@gmail.com</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <div class="logo" style="color:var(--on-dark);">Melvane</div>
+      <p style="color:var(--neutral); margin-top:8px;">Conciergerie parisienne</p>
+    </div>
+    <div>
+      <p><a href="tel:+33974377605">+33 9 74 37 76 05</a></p>
+      <p><a href="mailto:melvanebydesign@gmail.com">melvanebydesign@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    ©2026 MelvaneByDesign, Inc
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
