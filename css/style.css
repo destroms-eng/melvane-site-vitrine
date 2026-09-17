@@ -6,6 +6,7 @@
 
 :root {
   --bg: #F5F1E8;
+  --bg-deep: #EBE0C9;
   --ink: #1C1A17;
   --accent: #8A6D4A;
   --neutral: #B8AFA0;
@@ -385,9 +386,11 @@ section { padding: 96px 0; }
 /* Reassurance stats */
 
 .stats {
-  background: var(--ink);
-  color: var(--on-dark);
+  background: var(--bg-deep);
+  color: var(--ink);
   padding: 64px 0;
+  border-top: 1px solid rgba(28,26,23,0.07);
+  border-bottom: 1px solid rgba(28,26,23,0.07);
 }
 
 .stats .container {
@@ -400,12 +403,12 @@ section { padding: 96px 0; }
 .stat-value {
   font-family: var(--font-display);
   font-size: clamp(36px, 5vw, 56px);
-  color: var(--on-dark);
+  color: var(--ink);
   margin-bottom: 4px;
 }
 
 .stat-label {
-  color: var(--neutral);
+  color: rgba(28,26,23,0.55);
   font-size: 14px;
 }
 
@@ -416,12 +419,14 @@ section { padding: 96px 0; }
 /* Pourquoi Melvane / différenciants */
 
 .proof {
-  background: var(--ink);
-  color: var(--on-dark);
+  background: var(--bg-deep);
+  color: var(--ink);
+  border-top: 1px solid rgba(28,26,23,0.07);
+  border-bottom: 1px solid rgba(28,26,23,0.07);
 }
 
 .proof .section-title,
-.proof h3 { color: var(--on-dark); }
+.proof h3 { color: var(--ink); }
 
 .proof-grid {
   display: grid;
@@ -436,7 +441,7 @@ section { padding: 96px 0; }
 }
 
 .proof-block p {
-  color: var(--neutral);
+  color: rgba(28,26,23,0.6);
   font-size: 16px;
 }
 
@@ -449,14 +454,16 @@ section { padding: 96px 0; }
 
 .rating-card {
   flex: 1 1 180px;
-  border: 1px solid rgba(245,241,232,0.14);
+  background: var(--bg);
+  border: 1px solid rgba(28,26,23,0.08);
   border-radius: 6px;
   padding: 28px 32px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .rating-card:hover {
-  border-color: rgba(245,241,232,0.32);
+  border-color: rgba(28,26,23,0.16);
+  box-shadow: 0 12px 32px rgba(28,26,23,0.06);
   transform: translateY(-2px);
 }
 
@@ -465,7 +472,7 @@ section { padding: 96px 0; }
   display: inline-block;
   font-size: 17px;
   letter-spacing: 3px;
-  color: rgba(245,241,232,0.22);
+  color: rgba(28,26,23,0.15);
   margin-bottom: 16px;
 }
 
@@ -482,19 +489,19 @@ section { padding: 96px 0; }
 .proof-number-value {
   font-family: var(--font-display);
   font-size: 40px;
-  color: var(--on-dark);
+  color: var(--ink);
   line-height: 1;
 }
 
 .proof-number-value span {
   font-family: var(--font-body);
   font-size: 18px;
-  color: var(--neutral);
+  color: rgba(28,26,23,0.45);
   margin-left: 2px;
 }
 
 .proof-number-label {
-  color: var(--neutral);
+  color: rgba(28,26,23,0.5);
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -882,6 +889,76 @@ form.contact-form { display: flex; flex-direction: column; gap: 16px; }
 }
 
 .page-hero h1 { font-size: clamp(48px, 7vw, 84px); }
+
+/* Variante photographique : image d'ambiance Paris en fond, overlay ink
+   pour la lisibilité du texte clair — remplace le bandeau plat sur les
+   pages secondaires (tendance 2026 : hero éditorial plutôt qu'un simple
+   titre sur fond uni). */
+.page-hero.has-image {
+  position: relative;
+  padding: 200px 0 88px;
+  background-size: cover;
+  background-position: center;
+  color: var(--on-dark);
+}
+
+.page-hero.has-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(28,26,23,0.55), rgba(28,26,23,0.4));
+}
+
+.page-hero.has-image .container {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero.has-image h1,
+.page-hero.has-image .section-lede {
+  color: var(--on-dark);
+}
+
+.page-hero.has-image .section-lede {
+  color: rgba(245,241,232,0.85);
+}
+
+/* Bande éditoriale plein cadre (pause visuelle entre deux sections) */
+
+.editorial-break {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.editorial-break::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(28,26,23,0.32);
+}
+
+.editorial-break .container {
+  position: relative;
+  z-index: 1;
+}
+
+.editorial-break blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--on-dark);
+  max-width: 16ch;
+  line-height: 1.2;
+}
+
+@media (max-width: 700px) {
+  .editorial-break { background-attachment: scroll; min-height: 46vh; }
+}
 
 /* Practical info list (Guests) */
 
