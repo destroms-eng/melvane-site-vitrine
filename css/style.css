@@ -723,6 +723,16 @@ section { padding: 96px 0; }
   border: 1px solid rgba(28,26,23,0.06);
 }
 
+/* Carte flottante : chevauche volontairement le bas de la photo de hero
+   au lieu de se coller pile à son bord (transition nette et sans respiration
+   jugée "horrible") — motif classique des barres de recherche premium. */
+.widget-shell--float {
+  position: relative;
+  z-index: 5;
+  margin-top: -76px;
+  margin-bottom: 64px;
+}
+
 .widget-placeholder {
   border: 1px dashed var(--neutral);
   border-radius: 4px;
