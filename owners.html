@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Votre appartement, entre de bonnes mains — Melvane</title>
 <meta name="description" content="Confiez la gestion de votre appartement parisien à Melvane. Tarification dynamique, prise en charge totale, transparence des revenus.">
-<link rel="stylesheet" href="css/style.css?v=10">
+<link rel="stylesheet" href="css/style.css?v=12">
 </head>
 <body>
 
@@ -62,18 +62,50 @@
       <div>
         <h2 class="section-title reveal">Nous nous occupons de tout</h2>
         <p>Réparations, ménage, linge, maintenance courante, jusqu'à l'architecture d'intérieur de votre appartement : nous nous occupons de tout. Vous ne gérez rien, à aucun moment — c'est la promesse de Melvane.</p>
-        <ul>
-          <li>Réparations</li>
-          <li>Ménage</li>
-          <li>Linge</li>
-          <li>Maintenance</li>
-          <li>Architecture d'intérieur</li>
-        </ul>
+        <div class="service-pills">
+          <a href="#reparations" class="service-pill"><span>01</span>Réparations</a>
+          <a href="#menage" class="service-pill"><span>02</span>Ménage</a>
+          <a href="#linge" class="service-pill"><span>03</span>Linge</a>
+          <a href="#maintenance" class="service-pill"><span>04</span>Maintenance</a>
+          <a href="#architecture" class="service-pill"><span>05</span>Architecture d'intérieur</a>
+        </div>
       </div>
     </div>
 
   </div>
 </div>
+
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="service-detail-grid reveal">
+      <div class="service-detail" id="reparations">
+        <span class="service-detail-num">01</span>
+        <h3>Réparations</h3>
+        <p>De la poignée qui coince à la fuite d'eau, notre équipe technique intervient rapidement pour que chaque incident soit résolu avant même que vous en ayez connaissance.</p>
+      </div>
+      <div class="service-detail" id="menage">
+        <span class="service-detail-num">02</span>
+        <h3>Ménage</h3>
+        <p>Un ménage complet à chaque rotation, réalisé selon des standards hôteliers, pour que votre appartement soit impeccable à chaque arrivée.</p>
+      </div>
+      <div class="service-detail" id="linge">
+        <span class="service-detail-num">03</span>
+        <h3>Linge</h3>
+        <p>Linge de maison et literie de qualité hôtelière, lavés et renouvelés en interne — un détail de confort qui pèse lourd dans les avis voyageurs.</p>
+      </div>
+      <div class="service-detail" id="maintenance">
+        <span class="service-detail-num">04</span>
+        <h3>Maintenance</h3>
+        <p>Contrôles réguliers de l'électroménager, de la plomberie et des équipements techniques, pour anticiper l'usure avant qu'elle ne devienne un problème.</p>
+      </div>
+      <div class="service-detail" id="architecture">
+        <span class="service-detail-num">05</span>
+        <h3>Architecture d'intérieur</h3>
+        <p>Notre équipe déco repense l'agencement et le style de votre bien pour en maximiser à la fois l'attrait locatif et la valeur perçue.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="proof">
   <div class="container">
@@ -102,9 +134,11 @@
 </section>
 
 <section class="stats" style="padding:56px 0;">
-  <div class="container" style="grid-template-columns: repeat(2,1fr); display:grid; max-width:500px;">
-    <div><div class="stat-value">70</div><div class="stat-label">Appartements gérés</div></div>
-    <div><div class="stat-value">95%</div><div class="stat-label">Taux d'occupation moyen</div></div>
+  <div class="container">
+    <div><div class="stat-value" data-count="70">70</div><div class="stat-label">Appartements gérés</div></div>
+    <div><div class="stat-value" data-count="95" data-suffix="%">95%</div><div class="stat-label">Taux d'occupation moyen</div></div>
+    <div><div class="stat-value" data-count="5" data-suffix="+">5+</div><div class="stat-label">Années d'expérience</div></div>
+    <div><div class="stat-value">24/7</div><div class="stat-label">Support propriétaire</div></div>
   </div>
   <!-- Chiffre 95% à confirmer avec Roman avant publication (voir brief) -->
 </section>
@@ -214,6 +248,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=6"></script>
+<script src="js/main.js?v=7"></script>
 </body>
 </html>

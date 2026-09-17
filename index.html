@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Melvane — Conciergerie parisienne</title>
 <meta name="description" content="Melvane gère 70 appartements à Paris avec l'exigence d'un propriétaire. Support 24/7, service de conciergerie sur demande.">
-<link rel="stylesheet" href="css/style.css?v=10">
+<link rel="stylesheet" href="css/style.css?v=12">
 </head>
 <body>
 
@@ -42,7 +42,7 @@
 
 <section class="hero">
   <div class="hero-media">
-    <video autoplay muted loop playsinline poster="https://static.wixstatic.com/media/a63541628db644c694a8bda6890ea023.jpg/v1/fill/w_1900,h_1400,al_c,q_85/img.jpg">
+    <video autoplay muted loop playsinline poster="media/hero-poster.jpg">
       <source src="media/hero.mp4" type="video/mp4">
     </video>
   </div>
@@ -165,10 +165,10 @@
 
 <section class="stats" style="padding:56px 0;">
   <div class="container" style="grid-template-columns: repeat(4,1fr); display:grid;">
-    <div><div class="stat-value">70</div><div class="stat-label">Appartements</div></div>
-    <div><div class="stat-value">5+</div><div class="stat-label">Années d'expérience</div></div>
+    <div><div class="stat-value" data-count="70">70</div><div class="stat-label">Appartements</div></div>
+    <div><div class="stat-value" data-count="5" data-suffix="+">5+</div><div class="stat-label">Années d'expérience</div></div>
     <div><div class="stat-value">24/7</div><div class="stat-label">Support</div></div>
-    <div><div class="stat-value">4000+</div><div class="stat-label">Réservations</div></div>
+    <div><div class="stat-value" data-count="4000" data-suffix="+">4000+</div><div class="stat-label">Réservations</div></div>
   </div>
 </section>
 
@@ -220,6 +220,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=6"></script>
+<script src="js/main.js?v=7"></script>
 </body>
 </html>

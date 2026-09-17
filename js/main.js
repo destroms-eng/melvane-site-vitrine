@@ -52,6 +52,33 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
 
+  // Compteurs animés (chiffres clés) : comptent de 0 jusqu'à la valeur
+  // réelle au moment où ils entrent dans le viewport. Le HTML contient déjà
+  // la valeur finale (accessibilité / JS désactivé) ; on ne la remet à 0
+  // qu'au moment de déclencher l'animation, pas avant.
+  const statEls = document.querySelectorAll('.stat-value[data-count]');
+  if ('IntersectionObserver' in window && statEls.length) {
+    const countIO = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.count, 10);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1100;
+        const start = performance.now();
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+        countIO.unobserve(el);
+      });
+    }, { threshold: 0.4 });
+    statEls.forEach(el => countIO.observe(el));
+  }
+
   // Header : légère opacité/blur au scroll
   const header = document.querySelector('.site-header');
   if (header) {
