@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Melvane — Conciergerie parisienne</title>
 <meta name="description" content="Melvane gère 70 appartements à Paris avec l'exigence d'un propriétaire. Support 24/7, service de conciergerie sur demande.">
-<link rel="stylesheet" href="css/style.css?v=8">
+<link rel="stylesheet" href="css/style.css?v=9">
 </head>
 <body>
 
@@ -15,7 +15,7 @@
     <div class="header-actions">
       <div class="nav-links">
         <a href="owners.html" class="btn btn-outline">Owner</a>
-        <a href="guests.html" class="btn">Guest</a>
+        <a href="guests.html" class="btn btn-outline">Guest</a>
       </div>
       <button class="burger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -109,12 +109,14 @@
         <h3>Des voyageurs satisfaits, mesurés</h3>
         <p style="margin-bottom:20px;">La qualité de service se traduit en avis réels, pas juste en promesse marketing.</p>
         <div class="proof-numbers">
-          <div>
-            <div class="proof-number-value">4,75/5</div>
+          <div class="rating-card">
+            <div class="rating-stars" style="--pct:95%">★★★★★</div>
+            <div class="proof-number-value">4,75<span>/5</span></div>
             <div class="proof-number-label">Airbnb</div>
           </div>
-          <div>
-            <div class="proof-number-value">9,3/10</div>
+          <div class="rating-card">
+            <div class="rating-stars" style="--pct:93%">★★★★★</div>
+            <div class="proof-number-value">9,3<span>/10</span></div>
             <div class="proof-number-label">Booking.com</div>
           </div>
         </div>
@@ -161,6 +163,40 @@
     <div><div class="stat-value">5+</div><div class="stat-label">Années d'expérience</div></div>
     <div><div class="stat-value">24/7</div><div class="stat-label">Support</div></div>
     <div><div class="stat-value">4000+</div><div class="stat-label">Réservations</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title reveal">Une question ? Écrivez-nous.</h2>
+    <p class="section-lede">Un séjour à organiser, un bien à nous confier, ou simplement une question — écrivez-nous directement, nous répondons rapidement.</p>
+  </div>
+  <div class="container contact-grid reveal">
+    <form class="contact-form" action="https://formsubmit.co/md@edelsam.com" method="POST">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_subject" value="Nouveau message — site Melvane (Accueil)">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_template" value="table">
+      <div>
+        <label for="home-name">Nom</label>
+        <input type="text" id="home-name" name="name" required>
+      </div>
+      <div>
+        <label for="home-email">Email</label>
+        <input type="email" id="home-email" name="email" required>
+      </div>
+      <div>
+        <label for="home-message">Message</label>
+        <textarea id="home-message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-accent" style="align-self:flex-start;">Envoyer</button>
+    </form>
+    <div class="contact-info">
+      <h3 style="font-family:var(--font-display); font-size:22px; margin-bottom:16px;">Coordonnées</h3>
+      <p>48 Avenue Montaigne, 75008 Paris</p>
+      <p><a href="tel:+33974377605">+33 9 74 37 76 05</a></p>
+      <p style="color:var(--neutral); font-size:14px; margin-top:16px;">Le formulaire ci-contre est le seul moyen de nous contacter directement.</p>
+    </div>
   </div>
 </section>
 

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nos appartements — Melvane</title>
 <meta name="description" content="Découvrez les appartements gérés par Melvane à Paris : Louvre, Saint-Honoré, Marais, Saint-Germain-des-Prés.">
-<link rel="stylesheet" href="css/style.css?v=8">
+<link rel="stylesheet" href="css/style.css?v=9">
 </head>
 <body>
 
@@ -15,7 +15,7 @@
     <div class="header-actions">
       <div class="nav-links">
         <a href="owners.html" class="btn btn-outline">Owner</a>
-        <a href="guests.html" class="btn">Guest</a>
+        <a href="guests.html" class="btn btn-outline">Guest</a>
       </div>
       <button class="burger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -98,6 +98,40 @@
         <h3>4TOU</h3>
         <p>Un intérieur chaleureux à poutres apparentes, au design soigné. Situé au cœur du Marais, entre boutiques de créateurs et adresses branchées.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title reveal">Un appartement vous intéresse ?</h2>
+    <p class="section-lede">Disponibilités, tarifs, quartier — écrivez-nous directement, nous répondons rapidement.</p>
+  </div>
+  <div class="container contact-grid reveal">
+    <form class="contact-form" action="https://formsubmit.co/md@edelsam.com" method="POST">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_subject" value="Nouveau message — site Melvane (Appartements)">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_template" value="table">
+      <div>
+        <label for="proj-name">Nom</label>
+        <input type="text" id="proj-name" name="name" required>
+      </div>
+      <div>
+        <label for="proj-email">Email</label>
+        <input type="email" id="proj-email" name="email" required>
+      </div>
+      <div>
+        <label for="proj-message">Message</label>
+        <textarea id="proj-message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-accent" style="align-self:flex-start;">Envoyer</button>
+    </form>
+    <div class="contact-info">
+      <h3 style="font-family:var(--font-display); font-size:22px; margin-bottom:16px;">Coordonnées</h3>
+      <p>48 Avenue Montaigne, 75008 Paris</p>
+      <p><a href="tel:+33974377605">+33 9 74 37 76 05</a></p>
+      <p style="color:var(--neutral); font-size:14px; margin-top:16px;">Le formulaire ci-contre est le seul moyen de nous contacter directement.</p>
     </div>
   </div>
 </section>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Votre appartement, entre de bonnes mains — Melvane</title>
 <meta name="description" content="Confiez la gestion de votre appartement parisien à Melvane. Tarification dynamique, prise en charge totale, transparence des revenus.">
-<link rel="stylesheet" href="css/style.css?v=8">
+<link rel="stylesheet" href="css/style.css?v=9">
 </head>
 <body>
 
@@ -15,7 +15,7 @@
     <div class="header-actions">
       <div class="nav-links">
         <a href="owners.html" class="btn btn-outline">Owner</a>
-        <a href="guests.html" class="btn">Guest</a>
+        <a href="guests.html" class="btn btn-outline">Guest</a>
       </div>
       <button class="burger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -79,12 +79,14 @@
   <div class="container">
     <h2 class="section-title reveal">Une qualité de service mesurée</h2>
     <div class="proof-numbers">
-      <div>
-        <div class="proof-number-value">4,75/5</div>
+      <div class="rating-card">
+        <div class="rating-stars" style="--pct:95%">★★★★★</div>
+        <div class="proof-number-value">4,75<span>/5</span></div>
         <div class="proof-number-label">Airbnb</div>
       </div>
-      <div>
-        <div class="proof-number-value">9,3/10</div>
+      <div class="rating-card">
+        <div class="rating-stars" style="--pct:93%">★★★★★</div>
+        <div class="proof-number-value">9,3<span>/10</span></div>
         <div class="proof-number-label">Booking.com</div>
       </div>
     </div>
@@ -107,10 +109,94 @@
   <!-- Chiffre 95% à confirmer avec Roman avant publication (voir brief) -->
 </section>
 
-<section style="text-align:center;">
+<section style="padding-top:0;">
+  <div class="container">
+    <h2 class="section-title reveal">Nos appartements</h2>
+    <p class="section-lede">Un aperçu du niveau d'exigence que nous appliquons à chaque bien confié à Melvane.</p>
+    <div class="apartments-grid reveal">
+      <div class="apartment-card">
+        <img src="https://static.wixstatic.com/media/c8011e_563cbbe556464065bfdabdff78a0115f~mv2.png/v1/fill/w_900,h_675,al_c,q_85/img.png" alt="264REY, Louvre">
+        <div class="quartier">Louvre</div>
+        <h3>264REY</h3>
+        <p>Intérieur design par Melvane, lignes claires et couleurs neutres, à deux pas du Louvre. Climatisation intégrale, prises adaptées, cuisine entièrement équipée — pensé pour les familles en visite.</p>
+      </div>
+      <div class="apartment-card">
+        <img src="https://static.wixstatic.com/media/c8011e_0fbf247aee4d437ebab6e6b06aa62978~mv2.png/v1/fill/w_900,h_675,al_c,q_85/img.png" alt="206RIV, Saint-Honoré">
+        <div class="quartier">Saint-Honoré</div>
+        <h3>206RIV</h3>
+        <p>Entièrement modernisé et décoré par Melvane. Situé dans l'un des quartiers touristiques les plus recherchés, il offre près de 90 m² d'espace élégant et haut de gamme.</p>
+      </div>
+      <div class="apartment-card">
+        <img src="https://static.wixstatic.com/media/c8011e_6b1d3b96ce2845b1aabd201b02a7db09~mv2.png/v1/fill/w_900,h_675,al_c,q_85/img.png" alt="14TEMP, Marais">
+        <div class="quartier">Marais</div>
+        <h3>14TEMP</h3>
+        <p>Situé au cœur du Marais, l'un des quartiers les plus prisés de Paris. Entièrement rénové et décoré par Melvane, c'est l'un des appartements les plus demandés du portefeuille.</p>
+      </div>
+      <div class="apartment-card">
+        <img src="https://static.wixstatic.com/media/c8011e_d059117aa9bc48d5bcf49f6070ec0a8e~mv2.png/v1/fill/w_900,h_675,al_c,q_85/img.png" alt="56VER, Saint-Germain-des-Prés">
+        <div class="quartier">Saint-Germain-des-Prés</div>
+        <h3>56VER</h3>
+        <p>Un pied-à-terre élégant au cœur de Saint-Germain-des-Prés. Décoration soignée, prestations haut de gamme, à proximité immédiate des cafés et galeries du quartier.</p>
+      </div>
+      <div class="apartment-card">
+        <img src="media/apartments/14ECO.jpg" alt="14ECO, Marais">
+        <div class="quartier">Marais</div>
+        <h3>14ECO</h3>
+        <p>Cuisine ouverte et salon baigné de lumière, à deux pas des ruelles pavées du Marais. Un intérieur contemporain, pensé pour un séjour confortable au cœur du Paris historique.</p>
+      </div>
+      <div class="apartment-card">
+        <img src="media/apartments/55JAC.jpg" alt="55JAC, Marais">
+        <div class="quartier">Marais</div>
+        <h3>55JAC</h3>
+        <p>Un toit-terrasse privatif avec vue imprenable sur les toits de Paris, jusqu'au Panthéon. Une adresse rare, au cœur du Marais.</p>
+      </div>
+      <div class="apartment-card">
+        <img src="media/apartments/5POR.jpg" alt="5POR, Bercy">
+        <div class="quartier">Bercy</div>
+        <h3>5POR</h3>
+        <p>Lumineux et calme, avec vue sur la verdure depuis son balcon. Dans le quartier de Bercy, entre parc, cinémathèque et bords de Seine.</p>
+      </div>
+      <div class="apartment-card">
+        <img src="media/apartments/4TOU.jpg" alt="4TOU, Marais">
+        <div class="quartier">Marais</div>
+        <h3>4TOU</h3>
+        <p>Un intérieur chaleureux à poutres apparentes, au design soigné. Situé au cœur du Marais, entre boutiques de créateurs et adresses branchées.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
   <div class="container">
     <h2 class="section-title reveal">Discutons de votre bien</h2>
-    <a href="contact.html" class="btn btn-accent">Discutons de votre bien</a>
+    <p class="section-lede">Une estimation, une question sur nos prestations, un bien à nous confier — écrivez-nous directement, nous répondons rapidement.</p>
+  </div>
+  <div class="container contact-grid reveal">
+    <form class="contact-form" action="https://formsubmit.co/md@edelsam.com" method="POST">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_subject" value="Nouveau message — site Melvane (Owner)">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_template" value="table">
+      <div>
+        <label for="owner-name">Nom</label>
+        <input type="text" id="owner-name" name="name" required>
+      </div>
+      <div>
+        <label for="owner-email">Email</label>
+        <input type="email" id="owner-email" name="email" required>
+      </div>
+      <div>
+        <label for="owner-message">Message</label>
+        <textarea id="owner-message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-accent" style="align-self:flex-start;">Envoyer</button>
+    </form>
+    <div class="contact-info">
+      <h3 style="font-family:var(--font-display); font-size:22px; margin-bottom:16px;">Coordonnées</h3>
+      <p>48 Avenue Montaigne, 75008 Paris</p>
+      <p><a href="tel:+33974377605">+33 9 74 37 76 05</a></p>
+      <p style="color:var(--neutral); font-size:14px; margin-top:16px;">Le formulaire ci-contre est le seul moyen de nous contacter directement.</p>
+    </div>
   </div>
 </section>
 
