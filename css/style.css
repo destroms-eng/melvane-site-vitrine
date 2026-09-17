@@ -624,13 +624,16 @@ section { padding: 96px 0; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 16px 6px 6px;
-  border: 1px solid rgba(28,26,23,0.16);
+  padding: 6px 18px 6px 6px;
+  background: var(--bg);
+  border: 1px solid rgba(28,26,23,0.08);
   border-radius: 999px;
   font-size: 14px;
   font-weight: 500;
   color: var(--ink);
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(28,26,23,0.07);
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .service-pill span {
@@ -649,23 +652,21 @@ section { padding: 96px 0; }
 
 .service-pill:hover {
   background: var(--ink);
-  border-color: var(--ink);
   color: var(--on-dark);
+  box-shadow: 0 8px 20px rgba(28,26,23,0.16);
+  transform: translateY(-2px);
 }
 
-/* Détail des prestations (cibles des ancres ci-dessus) */
+/* Détail des prestations (cibles des ancres ci-dessus) : mêmes blocs
+   alternés image/texte que l'intro de la page, un par prestation. */
 
-.service-detail-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin-top: 8px;
+.owner-block[id] {
+  scroll-margin-top: 110px;
 }
 
 .service-detail {
-  padding-top: 20px;
+  padding-top: 16px;
   border-top: 2px solid var(--accent);
-  scroll-margin-top: 110px;
 }
 
 .service-detail-num {
@@ -679,21 +680,13 @@ section { padding: 96px 0; }
 }
 
 .service-detail h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 26px;
+  margin-bottom: 12px;
 }
 
 .service-detail p {
-  font-size: 15px;
+  font-size: 16px;
   color: rgba(28,26,23,0.65);
-}
-
-@media (max-width: 860px) {
-  .service-detail-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-}
-
-@media (max-width: 600px) {
-  .service-detail-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 860px) {
