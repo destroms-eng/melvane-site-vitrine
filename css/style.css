@@ -716,16 +716,6 @@ section { padding: 96px 0; }
   border: 1px solid rgba(28,26,23,0.06);
 }
 
-/* Carte flottante : chevauche volontairement le bas de la photo de hero
-   au lieu de se coller pile à son bord (transition nette et sans respiration
-   jugée "horrible") — motif classique des barres de recherche premium. */
-.widget-shell--float {
-  position: relative;
-  z-index: 5;
-  margin-top: -76px;
-  margin-bottom: 64px;
-}
-
 .widget-placeholder {
   border: 1px dashed var(--neutral);
   border-radius: 4px;
@@ -988,18 +978,15 @@ form.contact-form { display: flex; flex-direction: column; gap: 16px; }
   color: rgba(245,241,232,0.85);
 }
 
-/* Variante vidéo : fond animé (boucle silencieuse), titre réduit et
-   centré verticalement (au lieu du très grand titre en butée basse du
-   hero d'accueil) — contenu aligné à gauche, pas centré horizontalement. */
+/* Variante vidéo : fond animé (boucle silencieuse). Titre, sous-titre et
+   widget forment un seul bloc, centré verticalement dans la vidéo (pas
+   seulement le titre avec le widget qui déborde en bas). */
 .page-hero.has-video {
   position: relative;
-  min-height: 74vh;
+  min-height: 82vh;
   display: flex;
   align-items: center;
-  /* padding-bottom décale le centrage vers le haut pour compenser la carte
-     flottante du widget, qui recouvre visuellement le bas de la vidéo :
-     un centrage naïf sur toute la hauteur paraît alors "en bas". */
-  padding: 0 0 180px;
+  padding: 140px 0;
   overflow: hidden;
   color: var(--on-dark);
 }
@@ -1040,8 +1027,14 @@ form.contact-form { display: flex; flex-direction: column; gap: 16px; }
   margin-bottom: 0;
 }
 
+.page-hero.has-video .widget-shell {
+  margin: 36px 0 0;
+  max-width: 720px;
+}
+
 @media (max-width: 700px) {
-  .page-hero.has-video { min-height: 64vh; }
+  .page-hero.has-video { min-height: auto; padding: 120px 0 56px; }
+  .page-hero.has-video .widget-shell { max-width: none; }
 }
 
 /* Bande éditoriale plein cadre (pause visuelle entre deux sections) */
