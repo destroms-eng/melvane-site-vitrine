@@ -30,7 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (href === path) a.setAttribute('aria-current', 'page');
   });
 
-  // Révélation douce au scroll (tendance 2026 : mouvement discret, pas de gadget)
+  // Révélation douce au scroll (tendance 2026 : mouvement discret, pas de gadget).
+  // Seuil bas + marge généreuse pour ne jamais rater un élément qui passe
+  // vite dans le viewport ; filet de sécurité en plus (setTimeout) pour
+  // garantir qu'aucun contenu ne reste invisible en cas de raté.
   const revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && revealEls.length) {
     const io = new IntersectionObserver((entries) => {
@@ -40,8 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.01, rootMargin: '0px 0px 100px 0px' });
     revealEls.forEach(el => io.observe(el));
+    setTimeout(() => {
+      revealEls.forEach(el => el.classList.add('is-visible'));
+    }, 4000);
   } else {
     revealEls.forEach(el => el.classList.add('is-visible'));
   }
