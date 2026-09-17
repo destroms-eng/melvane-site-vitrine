@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — Melvane</title>
 <meta name="description" content="Contactez Melvane pour toute question sur nos appartements à Paris ou pour confier la gestion de votre bien.">
-<link rel="stylesheet" href="css/style.css?v=2">
+<link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
 
@@ -29,13 +29,15 @@
     <span class="logo">Melvane</span>
     <button class="mobile-menu-close" aria-label="Fermer">&times;</button>
   </div>
-  <nav>
-    <a href="index.html">Accueil</a>
-    <a href="guests.html">Guest</a>
-    <a href="owners.html">Owner</a>
-    <a href="projects.html">Appartements</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+  <div class="mobile-menu-body">
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="guests.html">Guest</a>
+      <a href="owners.html">Owner</a>
+      <a href="projects.html">Appartements</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </div>
 
 <section class="page-hero">
@@ -47,7 +49,15 @@
 
 <section style="padding-top:0;">
   <div class="container contact-grid">
-    <form class="contact-form" action="#" method="post">
+    <!-- Formulaire branché sur FormSubmit (service tiers gratuit, aucun
+         backend à héberger) : les envois arrivent par email sans jamais
+         afficher l'adresse sur le site. Premier envoi = email de
+         confirmation à activer une seule fois côté FormSubmit. -->
+    <form class="contact-form" action="https://formsubmit.co/md@edelsam.com" method="POST">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_subject" value="Nouveau message — site Melvane">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_template" value="table">
       <div>
         <label for="name">Nom</label>
         <input type="text" id="name" name="name" required>
@@ -66,7 +76,7 @@
       <h3 style="font-family:var(--font-display); font-size:22px; margin-bottom:16px;">Coordonnées</h3>
       <p>48 Avenue Montaigne, 75008 Paris</p>
       <p><a href="tel:+33974377605">+33 9 74 37 76 05</a></p>
-      <p><a href="mailto:melvanebydesign@gmail.com">melvanebydesign@gmail.com</a></p>
+      <p style="color:var(--neutral); font-size:14px; margin-top:16px;">Le formulaire ci-contre est le seul moyen de nous contacter directement.</p>
     </div>
   </div>
 </section>
@@ -78,15 +88,13 @@
       <p style="color:var(--neutral); margin-top:8px;">Conciergerie parisienne</p>
     </div>
     <div>
-      <p><a href="tel:+33974377605">+33 9 74 37 76 05</a></p>
-      <p><a href="mailto:melvanebydesign@gmail.com">melvanebydesign@gmail.com</a></p>
-    </div>
+      <p><a href="tel:+33974377605">+33 9 74 37 76 05</a></p>    </div>
   </div>
   <div class="container footer-bottom">
     ©2026 MelvaneByDesign, Inc
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 </body>
 </html>

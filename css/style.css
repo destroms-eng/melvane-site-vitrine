@@ -65,8 +65,28 @@ p {
   top: 0;
   z-index: 100;
   background: var(--bg);
-  border-bottom: 1px solid rgba(28,26,23,0.08);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+.site-header.scrolled {
+  border-bottom-color: rgba(28,26,23,0.08);
+  box-shadow: 0 4px 24px rgba(28,26,23,0.04);
+}
+
+/* Révélation douce au scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(.2,.7,.2,1), transform 0.7s cubic-bezier(.2,.7,.2,1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.reveal-1 { transition-delay: 0.05s; }
+.reveal-2 { transition-delay: 0.15s; }
+.reveal-3 { transition-delay: 0.25s; }
 
 .site-header .container {
   display: flex;
@@ -96,18 +116,28 @@ p {
   font-size: 14px;
   padding: 12px 24px;
   border-radius: 2px;
-  border: none;
+  border: 1px solid var(--ink);
   cursor: pointer;
   background: var(--ink);
   color: var(--bg);
-  transition: opacity 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 }
 
-.btn:hover { opacity: 0.85; }
+.btn:hover {
+  background: transparent;
+  color: var(--ink);
+  transform: translateY(-1px);
+}
 
 .btn-accent {
   background: var(--accent);
   color: var(--bg);
+  border-color: var(--accent);
+}
+
+.btn-accent:hover {
+  background: transparent;
+  color: var(--accent);
 }
 
 .btn-outline {
@@ -116,70 +146,150 @@ p {
   border: 1px solid var(--ink);
 }
 
+.btn-outline:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
 .nav-links {
   display: flex;
   gap: 8px;
 }
 
+/* Boutons Owner/Guest actifs selon la page courante */
+.nav-links a[aria-current="page"],
+.mobile-menu nav a[aria-current="page"] {
+  position: relative;
+}
+.nav-links a.btn[aria-current="page"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
 .burger {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 5px;
+  width: 40px;
+  height: 40px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 8px;
   margin-left: 8px;
+  border-radius: 50%;
+  transition: background 0.2s ease;
 }
+
+.burger:hover { background: rgba(28,26,23,0.06); }
 
 .burger span {
   width: 22px;
   height: 2px;
   background: var(--ink);
   display: block;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
+
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .mobile-menu {
   display: none;
   position: fixed;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: var(--bg);
   z-index: 200;
-  padding: 24px;
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: auto;
   box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
-.mobile-menu.open { display: flex; }
+.mobile-menu.open { display: flex; opacity: 1; }
 
 .mobile-menu-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 48px;
   width: 100%;
   box-sizing: border-box;
+  padding: 0 24px;
+  height: 84px;
+  flex: none;
+  border-bottom: 1px solid rgba(28,26,23,0.08);
 }
 
 .mobile-menu-close {
   background: none;
   border: none;
   font-size: 28px;
+  line-height: 1;
   cursor: pointer;
   color: var(--ink);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.mobile-menu-close:hover { background: rgba(28,26,23,0.06); }
+
+.mobile-menu-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 24px 80px;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .mobile-menu nav {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 8px;
   font-family: var(--font-display);
-  font-size: clamp(22px, 8vw, 28px);
   width: 100%;
+}
+
+.mobile-menu nav a {
+  font-size: clamp(32px, 8vw, 56px);
+  padding: 10px 2px;
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  opacity: 0.55;
+}
+
+.mobile-menu nav a:hover,
+.mobile-menu nav a:focus-visible {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.mobile-menu nav a[aria-current="page"] {
+  opacity: 1;
+}
+
+.mobile-menu nav a[aria-current="page"]::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: middle;
 }
 
 @media (max-width: 640px) {
@@ -495,12 +605,14 @@ section { padding: 96px 0; }
 .booking-band p { color: var(--neutral); margin: 0 auto 32px; }
 
 .widget-shell {
-  background: var(--bg);
-  border-radius: 4px;
-  padding: 32px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 28px;
   max-width: 900px;
   margin: 0 auto;
   color: var(--ink);
+  box-shadow: 0 20px 60px rgba(28,26,23,0.08);
+  border: 1px solid rgba(28,26,23,0.06);
 }
 
 .widget-placeholder {
@@ -510,6 +622,76 @@ section { padding: 96px 0; }
   text-align: center;
   color: var(--ink);
   font-size: 14px;
+}
+
+/* ---------- Widget Guesty : habillage "natif" ----------
+   Le widget n'est pas dans un iframe (voir snippet fourni par Guesty),
+   donc son DOM est dans notre propre page : on peut le restyler avec
+   notre propre CSS, malgré ce que suggérait le brief initial. Seules
+   les règles internes qui utilisent des couleurs/valeurs calculées en
+   JS (ex. la couleur "brand-primary") restent hors de notre contrôle
+   direct, mais on la pilote déjà via le paramètre "color" du widget. */
+
+.guesty-root-element,
+.guesty-root-element * {
+  font-family: var(--font-body) !important;
+}
+
+.guesty-root-element.guesty-widget__container {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+  align-items: flex-start !important;
+}
+
+.guesty-root-element .guesty-widget__item {
+  margin-right: 0 !important;
+  flex: 1 1 160px;
+  min-width: 140px;
+}
+
+/* Le widget rend chaque champ dans une balise <section> — notre règle
+   globale "section { padding: 96px 0 }" (pensée pour les sections de
+   page) s'y appliquait aussi et gonflait chaque champ de ~192px de vide.
+   On neutralise le padding uniquement à l'intérieur du widget. */
+.guesty-root-element section {
+  padding: 0 !important;
+}
+
+.guesty-root-element .cities-dropdown,
+.guesty-root-element .guests-dropdown {
+  width: 100% !important;
+  min-width: 140px;
+}
+
+.guesty-root-element #guesty-search-widget__datepicker {
+  width: 100%;
+  flex: 2 1 280px;
+}
+
+.guesty-root-element .guesty-search-submit-btn {
+  width: 100% !important;
+  border-radius: 2px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em;
+}
+
+.guesty-root-element .selectr-selected,
+.guesty-root-element #guesty-search-widget__datepicker [id^=date-picker-wrapper],
+.guesty-root-element .__super-input {
+  border: 1px solid var(--neutral) !important;
+  border-radius: 2px !important;
+  background-color: var(--bg) !important;
+}
+
+@media (max-width: 700px) {
+  .guesty-root-element.guesty-widget__container {
+    flex-direction: column;
+  }
+  .guesty-root-element .guesty-widget__item {
+    width: 100%;
+  }
 }
 
 /* Contact form */
