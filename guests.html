@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Réservez votre séjour — Melvane</title>
 <meta name="description" content="Réservez votre séjour à Paris avec Melvane. Support 24/7, quartiers centraux, appartements haut de gamme.">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
 
@@ -48,12 +48,12 @@
 <section style="padding-top:0;">
   <div class="container">
     <div class="widget-shell">
-      <!-- Widget de réservation Guesty : à coller ici tel que fourni par Guesty
-           (script officiel, non réécrit). Couleur de config à aligner sur
-           l'accent #8A6D4A une fois posé. Voir brief section Guests. -->
-      <div class="widget-placeholder">
-        Widget de réservation Guesty — à intégrer ici (voir note technique du brief)
-      </div>
+      <!-- Widget de réservation Guesty : code officiel fourni par Guesty,
+           non réécrit à l'exception du paramètre "color" (aligné sur
+           l'accent #8A6D4A du design system au lieu du bleu Guesty par
+           défaut). Voir brief section Guests pour le comportement au clic
+           sur "Rechercher" à vérifier avec Roman une fois testé. -->
+      <div id="search-widget_IO312PWQ"><script>!function(e,t,a,n,c,r){function s(t){e.console.log("[Guesty Embedded Widget]:",t)}var i,d,l,o,y,m,g,h,p,u;n&&(i=n,d=t.getElementsByTagName("head")[0],(l=t.createElement("link")).rel="stylesheet",l.type="text/css",l.href=i,l.media="all",d.appendChild(l)),o=function(){try{e[a].create(r).catch(function(e){s(e.message)})}catch(e){s(e.message)}},h=!1,y=c,m=function(){h||this.readyState&&"complete"!=this.readyState||(h=!0,o())},(g=t.createElement("script")).type="text/javascript",g.src=y,g.async="true",g.onload=g.onreadystatechange=m,p=g,(u=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,u)}(window,document,"GuestySearchBarWidget","https://s3.amazonaws.com/guesty-frontend-production/search-bar-production.css","https://s3.amazonaws.com/guesty-frontend-production/search-bar-production.js",{"siteUrl":"melvanebydesign.guestybookings.com","color":"#8A6D4A"});</script></div>
     </div>
   </div>
 </section>

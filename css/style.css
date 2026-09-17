@@ -23,7 +23,11 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--bg);
+  /* !important nécessaire : le widget Guesty injecte une règle globale
+     "body{background:transparent}" dans sa feuille de style (non isolée),
+     qui écraserait sinon notre fond sur toutes les pages où le widget
+     est présent. */
+  background: var(--bg) !important;
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 16px;
