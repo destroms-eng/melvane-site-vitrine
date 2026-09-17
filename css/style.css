@@ -1059,15 +1059,20 @@ form.contact-form { display: flex; flex-direction: column; gap: 16px; }
 .editorial-break .container {
   position: relative;
   z-index: 1;
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
-.editorial-break blockquote {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 44px);
+.editorial-break .section-title {
   color: var(--on-dark);
-  max-width: 16ch;
-  line-height: 1.2;
+}
+
+.editorial-break .pillar h3 {
+  color: var(--on-dark);
+}
+
+.editorial-break .pillar p {
+  color: rgba(245,241,232,0.82);
 }
 
 @media (max-width: 700px) {
