@@ -606,8 +606,8 @@ section { padding: 96px 0; }
 
 .widget-shell {
   background: #fff;
-  border-radius: 6px;
-  padding: 28px;
+  border-radius: 10px;
+  padding: 12px;
   max-width: 900px;
   margin: 0 auto;
   color: var(--ink);
@@ -637,20 +637,6 @@ section { padding: 96px 0; }
   font-family: var(--font-body) !important;
 }
 
-.guesty-root-element.guesty-widget__container {
-  display: flex !important;
-  flex-wrap: wrap;
-  gap: 12px;
-  width: 100%;
-  align-items: flex-start !important;
-}
-
-.guesty-root-element .guesty-widget__item {
-  margin-right: 0 !important;
-  flex: 1 1 160px;
-  min-width: 140px;
-}
-
 /* Le widget rend chaque champ dans une balise <section> — notre règle
    globale "section { padding: 96px 0 }" (pensée pour les sections de
    page) s'y appliquait aussi et gonflait chaque champ de ~192px de vide.
@@ -659,38 +645,125 @@ section { padding: 96px 0; }
   padding: 0 !important;
 }
 
-.guesty-root-element .cities-dropdown,
-.guesty-root-element .guests-dropdown {
-  width: 100% !important;
-  min-width: 140px;
+/* La destination (cities-dropdown) est un <select> que Guesty passe lui-même
+   en display:none tant qu'aucune destination n'est configurée côté back-office
+   (une seule option placeholder désactivée) — mais sa section garde sa largeur
+   dans le flex, ce qui créait un grand vide à gauche de la barre. On la masque
+   entièrement ; à réactiver dès que des destinations existent dans Guesty. */
+.guesty-root-element .cities-dropdown {
+  display: none !important;
+}
+
+.guesty-root-element.guesty-widget__container {
+  display: flex !important;
+  align-items: stretch !important;
+  gap: 0;
+  width: 100%;
+  border: 1px solid rgba(28,26,23,0.15);
+  border-radius: 8px;
+  /* Pas d'overflow:hidden ici : le calendrier (.lightpick) et le menu du
+     sélecteur de voyageurs se positionnent en absolute par rapport à cette
+     barre et débordent volontairement en dessous — un overflow:hidden les
+     couperait entièrement. On simule le pourtour arrondi uniquement sur le
+     bouton (seul enfant avec un fond plein) au lieu de clipper le conteneur. */
+  background: var(--bg);
+}
+
+.guesty-root-element .guesty-widget__item {
+  margin: 0 !important;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 4px 20px;
+  border-right: 1px solid rgba(28,26,23,0.12);
+}
+
+.guesty-root-element .guesty-widget__item:last-child {
+  border-right: none;
+  flex: 0 0 auto;
+  padding: 0;
+}
+
+/* Le champ dates pèse deux fois plus qu'un champ simple (2 inputs à l'intérieur) */
+.guesty-root-element .guesty-widget__item:has(#guesty-search-widget__datepicker) {
+  flex: 2 1 0;
 }
 
 .guesty-root-element #guesty-search-widget__datepicker {
+  display: flex;
   width: 100%;
-  flex: 2 1 280px;
+}
+
+.guesty-root-element #guesty-search-widget__datepicker > div {
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+.guesty-root-element #guesty-search-widget__datepicker > div:first-child {
+  border-right: 1px solid rgba(28,26,23,0.12);
+}
+
+.guesty-root-element .__super-input {
+  border: none !important;
+  background: transparent !important;
+  width: 100%;
+  height: 56px;
+  padding: 0 16px !important;
+  font-size: 14px !important;
+  color: var(--ink) !important;
+}
+
+.guesty-root-element .guests-dropdown,
+.guesty-root-element .selectr-container {
+  width: 100%;
+}
+
+.guesty-root-element .selectr-selected {
+  border: none !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  height: 56px !important;
+  display: flex !important;
+  align-items: center;
+  padding: 0 16px !important;
+  font-size: 14px !important;
 }
 
 .guesty-root-element .guesty-search-submit-btn {
-  width: 100% !important;
-  border-radius: 2px !important;
+  height: 56px !important;
+  width: 180px !important;
+  border: none !important;
+  border-radius: 0 8px 8px 0 !important;
   font-weight: 600 !important;
-  letter-spacing: 0.01em;
+  font-size: 13px !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--accent) !important;
+  color: var(--on-dark) !important;
+  transition: opacity 0.2s ease;
 }
 
-.guesty-root-element .selectr-selected,
-.guesty-root-element #guesty-search-widget__datepicker [id^=date-picker-wrapper],
-.guesty-root-element .__super-input {
-  border: 1px solid var(--neutral) !important;
-  border-radius: 2px !important;
-  background-color: var(--bg) !important;
+.guesty-root-element .guesty-search-submit-btn:hover {
+  opacity: 0.85;
 }
 
 @media (max-width: 700px) {
   .guesty-root-element.guesty-widget__container {
     flex-direction: column;
+    border-radius: 12px;
   }
   .guesty-root-element .guesty-widget__item {
+    border-right: none;
+    border-bottom: 1px solid rgba(28,26,23,0.12);
     width: 100%;
+  }
+  .guesty-root-element .guesty-widget__item:last-child {
+    border-bottom: none;
+  }
+  .guesty-root-element .guesty-search-submit-btn {
+    width: 100% !important;
+    border-radius: 0 0 12px 12px !important;
   }
 }
 

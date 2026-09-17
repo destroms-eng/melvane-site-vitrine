@@ -59,4 +59,30 @@ document.addEventListener('DOMContentLoaded', () => {
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
+
+  // Widget Guesty : traduction des libellés en dur (le widget est fourni en
+  // anglais sans option de locale). Son script tiers l'injecte de façon
+  // asynchrone bien après DOMContentLoaded (parfois plusieurs secondes), et
+  // réécrit son propre DOM ensuite — on observe donc le conteneur présent
+  // dès le HTML initial (jamais retiré) plutôt que le widget lui-même, qui
+  // n'existe pas encore au moment où ce script s'exécute.
+  const guestyMount = document.getElementById('search-widget_IO312PWQ');
+  if (guestyMount) {
+    const translateGuesty = () => {
+      // Guesty pose ses classes directement sur #search-widget_IO312PWQ
+      // (le "root" n'est pas un enfant séparé) : on cherche donc les champs
+      // depuis guestyMount lui-même, pas depuis un querySelector du root.
+      const root = guestyMount;
+      const checkIn = root.querySelector('.check-in');
+      if (checkIn && checkIn.placeholder !== 'Arrivée') checkIn.placeholder = 'Arrivée';
+      const checkOut = root.querySelector('.check-out');
+      if (checkOut && checkOut.placeholder !== 'Départ') checkOut.placeholder = 'Départ';
+      const guestsLabel = root.querySelector('.selectr-label');
+      if (guestsLabel && /guests?/i.test(guestsLabel.textContent)) guestsLabel.textContent = 'Voyageurs';
+      const submitBtn = root.querySelector('.guesty-search-submit-btn');
+      if (submitBtn && submitBtn.textContent.trim() !== 'Rechercher') submitBtn.textContent = 'Rechercher';
+    };
+    translateGuesty();
+    new MutationObserver(translateGuesty).observe(guestyMount, { childList: true, subtree: true, characterData: true });
+  }
 });
