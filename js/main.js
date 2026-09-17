@@ -2,15 +2,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const burger = document.querySelector('.burger');
   const menu = document.querySelector('.mobile-menu');
   const close = document.querySelector('.mobile-menu-close');
+  const backdrop = document.querySelector('.mobile-menu-backdrop');
 
   const openMenu = () => {
     menu.classList.add('open');
     burger.classList.add('open');
+    if (backdrop) backdrop.classList.add('open');
     document.body.style.overflow = 'hidden';
   };
   const closeMenu = () => {
     menu.classList.remove('open');
     burger.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('open');
     document.body.style.overflow = '';
   };
 
@@ -21,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   if (close && menu) {
     close.addEventListener('click', closeMenu);
+  }
+  if (backdrop) {
+    backdrop.addEventListener('click', closeMenu);
   }
 
   // Marque le lien courant dans les boutons Owner/Guest et le menu plein écran

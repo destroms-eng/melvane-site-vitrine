@@ -198,6 +198,10 @@ p {
 .burger.open span:nth-child(2) { opacity: 0; }
 .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+.mobile-menu-backdrop {
+  display: none;
+}
+
 .mobile-menu {
   display: none;
   position: fixed;
@@ -215,6 +219,58 @@ p {
 }
 
 .mobile-menu.open { display: flex; opacity: 1; }
+
+/* À partir d'un certain gabarit, le menu plein écran fait "mauvais goût" :
+   on passe à un tiroir qui glisse depuis la droite, avec un fond translucide
+   qui laisse deviner la page derrière plutôt que de tout recouvrir. */
+@media (min-width: 701px) {
+  .mobile-menu-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(28,26,23,0.45);
+    z-index: 190;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+  }
+
+  .mobile-menu-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-menu {
+    display: flex;
+    inset: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(440px, 90vw);
+    height: 100%;
+    box-shadow: -24px 0 60px rgba(28,26,23,0.16);
+    opacity: 1;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.35s cubic-bezier(.2,.7,.2,1), visibility 0s linear 0.35s;
+  }
+
+  .mobile-menu.open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.35s cubic-bezier(.2,.7,.2,1);
+  }
+
+  .mobile-menu-body {
+    justify-content: flex-start;
+    padding-top: 56px;
+  }
+
+  .mobile-menu nav a {
+    font-size: clamp(26px, 2.6vw, 34px);
+  }
+}
 
 .mobile-menu-top {
   display: flex;
