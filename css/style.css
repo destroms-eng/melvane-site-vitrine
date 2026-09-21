@@ -340,14 +340,6 @@ p {
     transition: transform 0.35s cubic-bezier(.2,.7,.2,1);
   }
 
-  .mobile-menu-body {
-    justify-content: flex-start;
-    padding-top: 56px;
-  }
-
-  .mobile-menu nav a {
-    font-size: clamp(26px, 2.6vw, 34px);
-  }
 }
 
 .mobile-menu-top {
@@ -429,6 +421,28 @@ p {
 
 @media (max-width: 640px) {
   .nav-links { display: none; }
+}
+
+/* Tiroir desktop : placé APRÈS les règles de base du menu (même spécificité,
+   l'ordre décide), sinon la taille plein écran mobile reprend le dessus. */
+@media (min-width: 701px) {
+  .mobile-menu-body {
+    justify-content: flex-start;
+    padding-top: 48px;
+  }
+
+  .mobile-menu nav { gap: 2px; }
+
+  .mobile-menu nav a {
+    font-size: 26px;
+    padding: 9px 2px;
+  }
+
+  .mobile-menu nav a[aria-current="page"]::after {
+    width: 6px;
+    height: 6px;
+    margin-left: 10px;
+  }
 }
 
 /* ---------- Hero ---------- */
