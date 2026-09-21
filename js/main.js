@@ -106,16 +106,22 @@ document.addEventListener('DOMContentLoaded', () => {
       // (le "root" n'est pas un enfant séparé) : on cherche donc les champs
       // depuis guestyMount lui-même, pas depuis un querySelector du root.
       const root = guestyMount;
+      const L = document.documentElement.lang === 'en'
+        ? { checkIn: 'Check in', checkOut: 'Check out', guests: 'Guests', search: 'Search' }
+        : { checkIn: 'Arrivée', checkOut: 'Départ', guests: 'Voyageurs', search: 'Rechercher' };
       const checkIn = root.querySelector('.check-in');
-      if (checkIn && checkIn.placeholder !== 'Arrivée') checkIn.placeholder = 'Arrivée';
+      if (checkIn && checkIn.placeholder !== L.checkIn) checkIn.placeholder = L.checkIn;
       const checkOut = root.querySelector('.check-out');
-      if (checkOut && checkOut.placeholder !== 'Départ') checkOut.placeholder = 'Départ';
+      if (checkOut && checkOut.placeholder !== L.checkOut) checkOut.placeholder = L.checkOut;
       const guestsLabel = root.querySelector('.selectr-label');
-      if (guestsLabel && /guests?/i.test(guestsLabel.textContent)) guestsLabel.textContent = 'Voyageurs';
+      if (guestsLabel && /^(guests?|voyageurs?)$/i.test(guestsLabel.textContent.trim()) && guestsLabel.textContent !== L.guests) {
+        guestsLabel.textContent = L.guests;
+      }
       const submitBtn = root.querySelector('.guesty-search-submit-btn');
-      if (submitBtn && submitBtn.textContent.trim() !== 'Rechercher') submitBtn.textContent = 'Rechercher';
+      if (submitBtn && submitBtn.textContent.trim() !== L.search) submitBtn.textContent = L.search;
     };
     translateGuesty();
     new MutationObserver(translateGuesty).observe(guestyMount, { childList: true, subtree: true, characterData: true });
+    window.addEventListener('melvane:lang', translateGuesty);
   }
 });

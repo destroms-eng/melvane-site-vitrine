@@ -61,19 +61,56 @@ p {
 
 /* ---------- Header ---------- */
 
+/* En-tête transparent par-dessus le hero en haut de page, puis blanc cassé
+   (coquille d'œuf) dès qu'on défile. Fixe (et non sticky) pour que la photo
+   ou la vidéo du hero passe derrière. Le léger dégradé sombre du haut garde
+   le texte clair lisible sur les images claires. */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
-  background: var(--bg);
+  background: transparent;
   border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 130px;
+  background: linear-gradient(180deg, rgba(28,26,23,0.42), rgba(28,26,23,0));
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 .site-header.scrolled {
+  background: rgba(245,240,227,0.96);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border-bottom-color: rgba(28,26,23,0.08);
-  box-shadow: 0 4px 24px rgba(28,26,23,0.04);
+  box-shadow: 0 4px 24px rgba(28,26,23,0.05);
 }
+
+.site-header.scrolled::before { opacity: 0; }
+
+/* Texte clair tant que l'en-tête est transparent */
+.site-header:not(.scrolled) .logo { color: var(--on-dark); }
+.site-header:not(.scrolled) .btn-outline {
+  color: var(--on-dark);
+  border-color: rgba(245,241,232,0.75);
+}
+.site-header:not(.scrolled) .btn-outline:hover {
+  background: var(--on-dark);
+  border-color: var(--on-dark);
+  color: var(--ink);
+}
+.site-header:not(.scrolled) .burger span { background: var(--on-dark); }
+.site-header:not(.scrolled) .burger:hover { background: rgba(245,241,232,0.16); }
 
 /* Révélation douce au scroll */
 .reveal {
@@ -90,6 +127,8 @@ p {
 .reveal-3 { transition-delay: 0.25s; }
 
 .site-header .container {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -102,6 +141,7 @@ p {
   font-weight: 600;
   color: var(--ink);
   letter-spacing: 0.02em;
+  transition: color 0.3s ease;
 }
 
 .header-actions {
@@ -191,8 +231,46 @@ p {
   height: 2px;
   background: var(--ink);
   display: block;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition: transform 0.25s ease, opacity 0.25s ease, background 0.3s ease;
 }
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 4px;
+}
+
+.lang-switch button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.lang-switch button img {
+  width: 22px;
+  height: 15px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(28,26,23,0.18);
+}
+
+.lang-switch button:hover { opacity: 0.85; }
+
+.lang-switch button.active {
+  opacity: 1;
+  background: rgba(28,26,23,0.07);
+}
+
+.site-header:not(.scrolled) .lang-switch button.active { background: rgba(245,241,232,0.2); }
+.site-header:not(.scrolled) .lang-switch button img { box-shadow: 0 0 0 1px rgba(245,241,232,0.35); }
 
 .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .burger.open span:nth-child(2) { opacity: 0; }
@@ -357,7 +435,7 @@ p {
 
 .hero {
   position: relative;
-  min-height: 92vh;
+  min-height: 100vh;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -1007,7 +1085,7 @@ form.contact-form { display: flex; flex-direction: column; gap: 16px; }
    titre sur fond uni). */
 .page-hero.has-image {
   position: relative;
-  padding: 200px 0 88px;
+  padding: 284px 0 88px;
   background-size: cover;
   background-position: center;
   color: var(--on-dark);
@@ -1042,7 +1120,7 @@ form.contact-form { display: flex; flex-direction: column; gap: 16px; }
   min-height: 82vh;
   display: flex;
   align-items: center;
-  padding: 140px 0;
+  padding: 224px 0 140px;
   overflow: hidden;
   color: var(--on-dark);
 }
@@ -1089,7 +1167,7 @@ form.contact-form { display: flex; flex-direction: column; gap: 16px; }
 }
 
 @media (max-width: 700px) {
-  .page-hero.has-video { min-height: auto; padding: 120px 0 56px; }
+  .page-hero.has-video { min-height: auto; padding: 150px 0 56px; }
   .page-hero.has-video .widget-shell { max-width: none; }
 }
 
