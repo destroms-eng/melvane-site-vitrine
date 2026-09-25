@@ -1135,7 +1135,8 @@ form.contact-form { display: flex; flex-direction: column; gap: 16px; }
   display: flex;
   align-items: center;
   padding: 224px 0 140px;
-  overflow: hidden;
+  /* Pas d'overflow:hidden ici : le calendrier du widget s'ouvre vers le bas et
+     déborde du hero — c'est .hero-media qui rogne la vidéo (ci-dessous). */
   color: var(--on-dark);
 }
 
@@ -1143,6 +1144,7 @@ form.contact-form { display: flex; flex-direction: column; gap: 16px; }
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
 }
 
 .page-hero.has-video .hero-media video {
