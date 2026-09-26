@@ -4,6 +4,8 @@
 (function () {
   var EN = {
     "Accueil": "Home",
+    "Propriétaire": "Owner",
+    "Voyageur": "Guest",
     "Accédez à vos revenus en temps réel depuis votre espace propriétaire, sans surprise en fin de mois.": "Track your revenue in real time from your owner portal, with no surprises at the end of the month.",
     "Années d'expérience": "Years of experience",
     "Appartement Melvane, 14TEMP": "Melvane apartment, 14TEMP",
